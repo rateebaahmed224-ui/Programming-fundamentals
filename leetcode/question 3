@@ -1,0 +1,16 @@
+int reverse(int x) {
+    long rev = 0;   // use long to detect overflow
+
+    while (x != 0) {
+        int digit = x % 10;
+        rev = rev * 10 + digit;
+        x /= 10;
+
+        // Check overflow: must be within 32-bit signed range
+        if (rev > 2147483647 || rev < -2147483648) {
+            return 0;
+        }
+    }
+
+    return (int)rev; 
+}
